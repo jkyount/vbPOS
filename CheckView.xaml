@@ -1,0 +1,65 @@
+﻿<UserControl x:Class="CheckView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:POS1"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="250"
+             ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+             >
+
+    <UserControl.Resources>
+        <Style TargetType="TextBlock" x:Key="TxtBlck">
+            <Setter Property="FontFamily" Value="Calibri"/>
+            <Setter Property="FontSize" Value="18"/>
+
+        </Style>
+        <DataTemplate x:Key="CheckViewTemplate">
+            <Grid Width="{Binding ActualWidth, ElementName=CtrlGrid}">
+           
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="7*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <Grid x:Name="ItemIndicator"  Grid.Column="0" >
+                    <TextBlock Style="{StaticResource TxtBlck}"  Text="{Binding Data[1]}"
+                               Width="{Binding Width, ElementName=ItemIndicator}"
+                               HorizontalAlignment="Stretch"/>
+                </Grid>
+                <Grid x:Name="ItemName" Grid.Column="1" >
+
+
+                    <TextBlock Style="{StaticResource TxtBlck}" Text="{Binding Data[2]}"
+                           Width="{Binding Width, ElementName=ItemName}"
+                           TextAlignment="Left"
+                           HorizontalAlignment="Stretch"/>
+                </Grid>
+                
+                <Grid x:Name="Price" Grid.Column="2">
+                    <TextBlock Style="{StaticResource TxtBlck}" Text="{Binding Data[3]}"
+                           Width="{Binding Width, ElementName=Price}"
+                           TextAlignment="Right"
+                           HorizontalAlignment="Left"/>
+                </Grid>
+            </Grid>
+        </DataTemplate>
+        
+    </UserControl.Resources>
+    <Grid x:Name="CtrlGrid">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+        
+        <ListBox Grid.Row = "0" ItemTemplate="{StaticResource CheckViewTemplate}" ItemsSource="{Binding CollCheckData}"
+                 Width="{Binding Width, ElementName=CtrlGrid}"  d:ItemsSource="{d:SampleData ItemCount=5}"
+                 HorizontalContentAlignment="Stretch"
+                 HorizontalAlignment="Stretch"
+                 ScrollViewer.HorizontalScrollBarVisibility="Hidden"/>
+            <Button Grid.Row="1"  Content="TES" Command="{Binding ButtonClickCommand}"/>
+        </Grid>
+    </Grid>
+</UserControl>
