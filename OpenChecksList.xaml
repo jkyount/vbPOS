@@ -1,0 +1,51 @@
+﻿<Page x:Class="OpenChecksList"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:POS1"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="pgHome_OpenTables">
+
+    <Page.Resources>
+        <Style TargetType="Label" x:Key="OpenTablesListBoxLabel">
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="Foreground" Value="#3A0000"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Margin" Value="1,2,1,2"/>
+        </Style>
+        
+        <DataTemplate x:Key="OpenTablesDataTemplate">
+            <Grid Width="{Binding ElementName=OpenTablesStackPanel, Path=ActualWidth}">
+                <Rectangle RadiusX="20" RadiusY="20" Stroke="white" StrokeThickness="3"/>
+                <StackPanel Orientation="Horizontal" Margin="2,2,2,2">
+                    <Label Style="{StaticResource OpenTablesListBoxLabel}" Content="{Binding Check}" Background="#ED7D31"/>
+                    <Label Style="{StaticResource OpenTablesListBoxLabel}" Content="{Binding OrderName}" Background="White"/>
+                    <Label Style="{StaticResource OpenTablesListBoxLabel}" Content="{Binding Total}" Background="White"/>
+                    <Label Style="{StaticResource OpenTablesListBoxLabel}" Content="{Binding Owner}" Background="White"/>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
+    <Grid>
+        <Grid x:Name = "MainGrid" Height="Auto">
+            <StackPanel x:Name="OpenTablesStackPanel" Panel.ZIndex ="100" Grid.Row="2" 
+                    
+                    Height="{Binding ElementName=MainGrid, Path=ActualHeight}">
+
+                <ListBox x:Name="OpenTablesListBox" 
+                        Background="#FF4B8CC8" 
+                        BorderBrush="Black"
+                        BorderThickness="3"
+                        Margin="3,3,3,3"
+                        ItemTemplate="{StaticResource OpenTablesDataTemplate}"
+                        Height="{Binding ElementName=MainGrid, Path=ActualHeight}"
+                         ItemsSource="{Binding OpenTablesCollection}">
+                </ListBox>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>

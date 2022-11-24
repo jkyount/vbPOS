@@ -1,0 +1,24 @@
+﻿<Page x:Class="HomeDynamicContent"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:POS1"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="pgHome_Content">
+
+    <Grid>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name ="FunctionBarRow" Height="1*"/>
+            <RowDefinition x:Name="FloorGridRow" Height="3*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+                <local:ServerFunctions x:Name="FunctionBar" Grid.Row="0"/>
+               
+        </Grid>
+            <Frame x:Name="Content" Grid.Row="1" Content="{Binding Path=ContentPage}"/>
+        </Grid>
+    </Grid>
+</Page>

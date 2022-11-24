@@ -1,0 +1,70 @@
+﻿<UserControl x:Name="FunctionBar" x:Class="ServerFunctions"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:POS1"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             Height="Auto"
+             Background="#FFFFC357">
+   
+    <UserControl.Resources>
+        <Style TargetType="Button"/>
+
+        <Style BasedOn="{StaticResource {x:Type Button}}" TargetType="Button" x:Key="EventButton">
+            <Setter Property="Height" Value="{Binding ElementName=SwitchUser, Path=Height}"/>
+            <Setter Property="Width" Value="{Binding ElementName=SwitchUser, Path=Width}"/>
+            <Setter Property="Panel.ZIndex" Value="10"/>
+        </Style>
+        
+
+    </UserControl.Resources>
+    <Grid>
+        <Rectangle Stroke="White" StrokeThickness="10" Margin="-15,0,-15,0"/>
+        <StackPanel Orientation="Horizontal" FlowDirection="RightToLeft" HorizontalAlignment="Center">
+            <Grid>
+            <Image x:Name="SwitchUser" Source="/POS1;component/Resources/home_SwitchUser.png" Margin="0,0,20,0"/>
+                <Button x:Name="btnSwitchUser" Template="{DynamicResource OverlayBtn}" Style="{StaticResource EventButton}"  
+                        Command="{Binding SwitchUserCommand}" Margin="0,0,20,0"/>
+            </Grid>
+            <Grid>
+            <Image x:Name="ServerReport" Source="/POS1;component/Resources/home_ServerReport.png" Margin="0,0,20,0" />
+                <Button x:Name="btnServerReport" Template="{DynamicResource OverlayBtn}" Style="{StaticResource EventButton}" Margin="0,0,20,0"/>
+            </Grid>
+
+            <Grid>
+                <Image x:Name="ReprintCheck"  Source="/POS1;component/Resources/home_ReprintCheck.png" Margin="0,0,0,0"/>
+                <Button x:Name="btnReprintCheck" Template="{DynamicResource OverlayBtn}" Style="{StaticResource EventButton}" Margin="0,0,0,0"/>
+            </Grid>
+
+
+            <Grid>
+                <Image x:Name="TransferCheck" Source="/POS1;component/Resources/home_TransferCheck.png" Margin="0,0,20,0" />
+                <Button x:Name="btnTransferCheck" Template="{DynamicResource OverlayBtn}" Style="{StaticResource EventButton}" Margin="0,0,20,0"/>
+            </Grid>
+
+            <Grid>
+                <Image x:Name="NewCarryout" Source="/POS1;component/Resources/home_NewCarryout.png" Margin="0,0,0,0" />
+                <Button x:Name="btnNewCarryout" Template="{DynamicResource OverlayBtn}" Style="{StaticResource EventButton}" Margin="0,0,0,0"/>
+            </Grid>
+
+            <Grid>
+                <Image x:Name="OpenChecks" Source="/POS1;component/Resources/home_OpenChecks.png" Margin="0,0,0,0" />
+                <Button x:Name="btnOpenChecks" Template="{DynamicResource OverlayBtn}" Style="{StaticResource EventButton}" 
+                        Command="{Binding OpenTablesCommand}"
+                        Margin="0,0,0,0"/>
+            </Grid>
+
+
+            <Grid>
+                <Image x:Name ="ViewTables" Source="/POS1;component/Resources/home_ViewTables.png" Margin="10,0,20,0" />
+                <Button x:Name="btnViewTables" Template="{DynamicResource OverlayBtn}" Style="{StaticResource EventButton}" 
+                        Command="{Binding ViewFloorCommand}"
+                        Margin="10,0,20,0"/>
+            </Grid>
+
+        </StackPanel>
+        <Rectangle Stroke="Black" StrokeThickness="1" Margin="-5,13,-5,13"/>
+    </Grid>
+</UserControl>

@@ -1,0 +1,95 @@
+﻿<Page x:Class="HomeTopBar"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:POS1"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="pgHome_TopBar">
+
+    <Page.Resources>
+
+        <Style TargetType="Button" x:Key="EventButton">
+        <Setter Property="Height" Value="{Binding Height, ElementName=home_Config}"/>
+        <Setter Property="Width" Value="{Binding Width, ElementName=home_Config}"/>
+        <Setter Property="Panel.ZIndex" Value="10"/>
+    </Style>
+
+    <Style TargetType="TextBox">
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property ="Background" Value="Transparent"/>
+        <Setter Property ="Height" Value="{Binding Height, ElementName=Server}"/>
+        <Setter Property="Width" Value="{Binding Width, ElementName=Server}"/>
+        <Setter Property="Margin" Value="5,5,5,5"/>
+        <Setter Property="Panel.ZIndex" Value="100"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="FontFamily" Value="Calibri"/>
+        <Setter Property="FontSize" Value="36"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="IsReadOnly"  Value="True"/>
+        
+
+
+
+    </Style>
+    <Style TargetType="Rectangle" x:Key="TextBoxBorder">
+        <Setter Property="Height" Value="{Binding ElementName=InnerGrid, Path=Height}"/>
+        <Setter Property="Width" Value="Auto"/>
+        <Setter Property="RadiusY" Value="5"/>
+        <Setter Property="RadiusX" Value="5"/>
+        <Setter Property="StrokeThickness" Value="2"/>
+        <Setter Property="Stroke" Value="Black"/>
+        <Setter Property="Fill" Value="White"/>
+        <Setter Property="Margin" Value="5,5,5,5"/>
+    </Style>
+
+    <Style TargetType="Image" x:Key="ButtonImage">
+        <Setter Property="Margin" Value="0,5,0,0"/>
+    </Style>
+
+    </Page.Resources>
+
+    <Grid x:Name="MainGrid" Height="Auto" Width="Auto" MinWidth="1" MinHeight="1">
+        <StackPanel Orientation="Vertical">
+            <StackPanel Background="#FFFFC357" Width="{Binding ElementName=MainGrid, Path=ActualWidth}" HorizontalAlignment="Center">
+                <Grid x:Name="InnerGrid" Height="{Binding ElementName=MainGrid, Path=Height}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="3*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Rectangle Grid.Column="0"  x:Name="Server" Style="{StaticResource TextBoxBorder}"/>
+
+                    <TextBox Grid.Column="0" x:Name="txtServerName"
+                                  Text="{Binding ServerName}"/>
+
+                    <Image Grid.Column="1"  Source="/POS1;component/Resources/home_AccentColor.png" Stretch="None"/>
+
+
+                    <StackPanel Grid.Column="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                        <Grid>
+
+          
+
+
+                            <Image Source="/POS1;component/Resources/home_Config.png" Stretch="None" x:Name="home_Config"
+                                        Style="{StaticResource ButtonImage}"/>
+                            <Button x:Name="btnConfig" Template="{DynamicResource OverlayBtn}" Style="{StaticResource EventButton}"/>
+                        </Grid>
+                        <Grid>
+                            <Image Source="/POS1;component/Resources/home_Reports.png"  Stretch="None"
+                               Style="{StaticResource ButtonImage}"/>
+                            <Button x:Name="btnReports" Template="{DynamicResource OverlayBtn}" Style="{StaticResource EventButton}"/>
+                        </Grid>
+
+                    </StackPanel>
+
+                </Grid>
+            </StackPanel>
+            <Rectangle Stroke="Black" StrokeThickness="1" Height="2" Fill="Black"/>
+        </StackPanel>
+    </Grid>
+</Page>

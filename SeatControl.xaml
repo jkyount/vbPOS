@@ -1,0 +1,102 @@
+﻿<UserControl x:Class="SeatControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:POS1"
+             mc:Ignorable="d" 
+             d:DesignHeight="60" d:DesignWidth="800">
+
+    <UserControl.Resources>
+
+        <Style TargetType="TextBox">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property ="Background" Value="Transparent"/>
+            <Setter Property ="Height" Value="{Binding Height, ElementName=CtrlGrid}"/>
+            <Setter Property="Width" Value="{Binding Width, ElementName=CtrlGrid}"/>
+            <Setter Property="Margin" Value="5,5,5,5"/>
+            <Setter Property="Panel.ZIndex" Value="10"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="Calibri"/>
+            <Setter Property="FontSize" Value="22"/>
+            
+            <Setter Property="IsReadOnly"  Value="True"/>
+            <Setter Property="IsManipulationEnabled"  Value="False"/>
+        </Style>
+        
+        <Style TargetType="Rectangle" x:Key="TextBoxBorder">
+            <Setter Property="Height" Value="{Binding ElementName=CtrlGrid, Path=Height}"/>
+            <Setter Property="Width" Value="Auto"/>
+            <Setter Property="RadiusY" Value="5"/>
+            <Setter Property="RadiusX" Value="5"/>
+            <Setter Property="StrokeThickness" Value="2"/>
+            <Setter Property="Stroke" Value="Black"/>
+            <Setter Property="Margin" Value="5,5,5,5"/>
+        </Style>
+
+        <Style TargetType="Rectangle" x:Key="CtrlBorder">
+            <Setter Property="Height" Value="{Binding ElementName=CtrlGrid, Path=Height}"/>
+            <Setter Property="Width" Value="Auto"/>
+            <Setter Property="StrokeThickness" Value="2"/>
+            <Setter Property="Stroke" Value="Black"/>
+            <Setter Property="Fill" Value="#222B35"/>
+        </Style>
+
+        <Style TargetType="Button" x:Key="EventButton">
+                <Setter Property="Height" Value="{Binding ElementName=CurrentSeat, Path=Height}"/>
+                <Setter Property="Width" Value="{Binding ElementName=CurrentSeat, Path=Width}"/>
+                <Setter Property="Panel.ZIndex" Value="100"/>
+                <Setter Property="Margin" Value="5,5,5,5"/>
+        </Style>
+
+
+    </UserControl.Resources>
+    <Grid x:Name="CtrlGrid">
+        <Rectangle Style="{StaticResource CtrlBorder}"/>
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Rectangle x:Name="CurrentSeat" Style="{StaticResource TextBoxBorder}"
+                           Fill="Black" Stroke="White"/>
+                <TextBox Foreground="#FFD966" Text="{Binding SeatIndicatorText}"/>
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <Rectangle Style="{StaticResource TextBoxBorder}"
+                           Fill="#325154" Stroke="White"/>
+                <TextBox Foreground="White" Text="Seat 1"/>
+                <Button x:Name="btnSeat1" 
+                        Style="{StaticResource EventButton}"
+                        Template="{DynamicResource OverlayBtn}"
+                        Command="{Binding ResetSeatCommand}"/>
+            </Grid>
+
+            <Grid Grid.Column="2">
+                <Rectangle Style="{StaticResource TextBoxBorder}"
+                           Fill="#325154" Stroke="White"/>
+                <TextBox Foreground="White" Text="Advance Seat"/>
+                <Button x:Name="btnAdvanceSeat" 
+                        Style="{StaticResource EventButton}"
+                        Template="{DynamicResource OverlayBtn}"
+                        Command="{Binding AdvanceSeatCommand}"/>
+            </Grid>
+
+            <Grid Grid.Column="3">
+                <Rectangle Style="{StaticResource TextBoxBorder}"
+                           Fill="White" Stroke="Black"/>
+                <TextBox Foreground="Black" Text="Edit Seats"/>
+                <Button x:Name="btnEditSeats" 
+                        Style="{StaticResource EventButton}"
+                        Template="{DynamicResource OverlayBtn}"
+                        Command="{Binding EditSeatCommand}"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

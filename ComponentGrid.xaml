@@ -1,0 +1,112 @@
+﻿<UserControl x:Class="ComponentGrid"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:POS1"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+ 
+        <UserControl.Resources>
+
+
+
+
+            <DataTemplate DataType="{x:Type local:vmCondensedButton}">
+                <local:CondensedMenuButton/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type local:vmExpandedButton}">
+                <local:ExpandedMenuButton/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type local:vmComponentButton}">
+                <local:ComponentMenuButton/>
+            </DataTemplate>
+
+        </UserControl.Resources>
+    <Grid>
+        
+        <Grid HorizontalAlignment="Right" VerticalAlignment="Top">
+            <local:CondensedMenuButton/>
+        </Grid>
+    <Grid Margin="20,20,20,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Frame Grid.Row="0" Content="{Binding ButtonColl[0]}"/>
+                <Frame Grid.Row="1" Content="{Binding ButtonColl[1]}"/>
+                <Frame Grid.Row="2" Content="{Binding ButtonColl[2]}"/>
+                <Frame Grid.Row="3" Content="{Binding ButtonColl[3]}"/>
+                <Frame Grid.Row="4" Content="{Binding ButtonColl[4]}"/>
+                <Frame Grid.Row="5" Content="{Binding ButtonColl[5]}"/>
+                <Frame Grid.Row="6" Content="{Binding ButtonColl[6]}"/>
+                <Frame Grid.Row="7" Content="{Binding ButtonColl[7]}"/>
+
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition  Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Frame Grid.Row="0" Content="{Binding ButtonColl[8]}"/>
+                <Frame Grid.Row="1" Content="{Binding ButtonColl[9]}"/>
+                <Frame Grid.Row="2" Content="{Binding ButtonColl[10]}"/>
+                <Frame Grid.Row="3" Content="{Binding ButtonColl[11]}"/>
+                <Frame Grid.Row="4" Content="{Binding ButtonColl[12]}"/>
+                <Frame Grid.Row="5" Content="{Binding ButtonColl[13]}"/>
+                <Frame Grid.Row="6" Content="{Binding ButtonColl[14]}"/>
+                <Frame Grid.Row="7" Content="{Binding ButtonColl[15]}"/>
+
+            </Grid>
+            <Grid Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Frame Grid.Row="0" Content="{Binding ButtonColl[16]}"/>
+                <Frame Grid.Row="1" Content="{Binding ButtonColl[17]}"/>
+                <Frame Grid.Row="2" Content="{Binding ButtonColl[18]}"/>
+                <Frame Grid.Row="3" Content="{Binding ButtonColl[19]}"/>
+                <Frame Grid.Row="4" Content="{Binding ButtonColl[20]}"/>
+                <Frame Grid.Row="5" Content="{Binding ButtonColl[21]}"/>
+                <Frame Grid.Row="6" Content="{Binding ButtonColl[22]}"/>
+                <Frame Grid.Row="7" Content="{Binding ButtonColl[23]}"/>
+
+            </Grid>
+
+
+
+
+
+
+        </Grid>
+    </Grid>
+
+</UserControl>
